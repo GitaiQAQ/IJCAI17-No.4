@@ -144,12 +144,12 @@ xgboost1，xgboost2, GBDT三份结果按0.47, 0.34, 0.19 比例融合。
 **Step2**：外部数据爬取
 
     additional/Weather_underground_day.py
-从https://www.wunderground.com按天读取机场所在地信息，爬取信息包含7列分别为[Port, Date, Precip , Rise_act, Rise_cil, Set_act, Set_cil]，对应内容为[机场代号，日期，降水量，真实日出时间，修正日出时间，真实日落时间，修正日落时间]。
+从https://www.wunderground.com 按天读取机场所在地信息，爬取信息包含7列分别为[Port, Date, Precip , Rise_act, Rise_cil, Set_act, Set_cil]，对应内容为[机场代号，日期，降水量，真实日出时间，修正日出时间，真实日落时间，修正日落时间]。
 
 
     additional/Weather_underground_hour.py
 
-从https://www.wunderground.com按小时读取机场所在地信息，爬取信息包含14列分别为[Port, Date, Time, Temp, Bodytemp, Dew, Humidity, Pressure, Visibility, Wind_dir, Wind_speed, Gust_speed, Event, Condition]，对应内容为[机场代号，日期，时间，气温，体感温度，露点，湿度，压力，能见度，风向，风速，阵风强度，气象事件，气象条件]。
+从https://www.wunderground.com 按小时读取机场所在地信息，爬取信息包含14列分别为[Port, Date, Time, Temp, Bodytemp, Dew, Humidity, Pressure, Visibility, Wind_dir, Wind_speed, Gust_speed, Event, Condition]，对应内容为[机场代号，日期，时间，气温，体感温度，露点，湿度，压力，能见度，风向，风速，阵风强度，气象事件，气象条件]。
 
 **Step3**：特征生成
 
