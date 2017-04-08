@@ -15,8 +15,7 @@ lizhongjie1989@163.com,     yaoyichen@aliyun.com
 - 赛题官网: [阿里天池IJCAI17](https://tianchi.aliyun.com/competition/introduction.htm?spm=5176.100067.5678.1.amifQx&raceId=231591 "阿里天池 IJCAI17") 
 - 赛题目标：通过阿里口碑网2000个商户从2015.07.01到2016.10.31的商家数据，用户支付行为数据以及用户浏览行为数据，预测商家在未来14天（2016.11.01-2016.11.14）的客户流量。
 - 测评函数：
-<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/k6olhzfz2si5p3n57d5w306x/costF.png" width="600" height="150" alt="Item-based filtering" /></div>
-![costF.png-50.1kB][1]
+<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/k6olhzfz2si5p3n57d5w306x/costF.png" width="650" height="150" alt="Item-based filtering" /></div>
 - 本次比赛鼓励参赛选手使用外部数据，如天气数据等。
 
 ----------
@@ -32,8 +31,8 @@ lizhongjie1989@163.com,     yaoyichen@aliyun.com
  - 采样周期为日，爬取程序为Weather_underground_day.py。
  - 详细天气：表格为WEATHER_raw.csv，各地采样间隔不定，最短为30min，最长为3h，爬取程序为 Weather_underground_hour.py。
  - 降水指数和天晴指数：feature/WEATHER_CON_LEVEL.csv 中RAIN_IND及CLEAR_IND对应列。
- - 人体舒适度指数：$SSD = \left( {1.818T + 18.18} \right)\left( {0.88{\rm{ }} + 0.002F} \right) + \left( {T - {\rm{ }}32} \right)/\left( {45{\rm{ }} - T} \right) - {\rm{ }}3.2V + {\rm{ }}18.2$
-其中：温度$T$，湿度$F$，风速$V$
+ - 人体舒适度指数：SSD=(1.818t+18.18)(0.88+0.002f)+(t-32)/(45-t)-3.2v+18.2
+其中：温度t，湿度f，风速v
  - 城市天气确定：通过城市经纬度计算城市到各机场距离，城市对应天气采用与之最近的机场信息。
 
 ###2.1.2 节假日信息
@@ -96,14 +95,13 @@ GBDT: 第一次训练样本保留量为90%。
 - 方法：过去21天的按工作日平均，得到按工作日平均的均值销量。通过过去三周按周统计的销量中位数及平均值，做线性拟合得到销量增量。将历史均值销量叠加销量增量即得到未来2周预测销量。
 - 由于方法本质上寻找历史上相似的(过去三周相关度较高)销量曲线作为未来预测，本质上为均值模型与KNN方法的结合。
 - 置信度即为融合系数，仅当三周相关系数或后两周相关系数的最小值大于0.7时有效。均值模型的融合比例最大为0.75。融合系数计算方法为：
-![eq1png.png-15.5kB][3]
+<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/gxdn8nohm2qsvayrgri4hbh3/eq1png.png" width="600" height="150" alt="Item-based filtering" /></div>
 
 
 ### 3.3 双11销量修正模型
 - 特征描述：仅包含商家特征，包含平均View/Pay比值，平均每天开店时间，关店时间，开店总时长；首次营业日期，非节假日销量中位数，节假日销量中位数，节假日/非节假日销量比值；商家类别，人均消费，评分，评论数，门店等级。
 - 双11销量增量，计算方法为2015-11-11当天销量$V_{20151111}$与其前后两周对应工作日$V_{20151028}$，$V_{20151104}$，$V_{20151118}$，$V_{20151125}$的加权销量的比值,权重系数分别为$0.15,0.35,0.35,0.15$.
-
- ![eq2.png-14.7kB][4]
+<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/5iyvh7olsr32dncmn49vuilo/eq2.png" width="600" height="150" alt="Item-based filtering" /></div>
 - 训练方法: 采用xgboost单模型训练，由于双11当天对应的工作日不同，2015年数据并不能很好反映出2016年双11节假日情况，且超市便利店类商店存在大量的数据缺失。为防止过拟合，参数设置均较为保守，最大深度为2，且加了较大的$L1$正则项，具体如下: max_depth = 2, learning_rate=0.01, n_estimators=500, reg_alpha=10, gamma = 1
 
 ### 3.4 模型融合
