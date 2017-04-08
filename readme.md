@@ -15,7 +15,7 @@ lizhongjie1989@163.com,     yaoyichen@aliyun.com
 - 赛题官网: [阿里天池IJCAI17](https://tianchi.aliyun.com/competition/introduction.htm?spm=5176.100067.5678.1.amifQx&raceId=231591 "阿里天池 IJCAI17") 
 - 赛题目标：通过阿里口碑网2000个商户从2015.07.01到2016.10.31的商家数据，用户支付行为数据以及用户浏览行为数据，预测商家在未来14天（2016.11.01-2016.11.14）的客户流量。
 - 测评函数：
-<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/k6olhzfz2si5p3n57d5w306x/costF.png" width="300" height="300" alt="Item-based filtering" /></div>
+<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/k6olhzfz2si5p3n57d5w306x/costF.png" width="600" height="150" alt="Item-based filtering" /></div>
 ![costF.png-50.1kB][1]
 - 本次比赛鼓励参赛选手使用外部数据，如天气数据等。
 
