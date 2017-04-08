@@ -31,7 +31,8 @@ lizhongjie1989@163.com,     yaoyichen@aliyun.com
  - 采样周期为日，爬取程序为Weather_underground_day.py。
  - 详细天气：表格为WEATHER_raw.csv，各地采样间隔不定，最短为30min，最长为3h，爬取程序为 Weather_underground_hour.py。
  - 降水指数和天晴指数：feature/WEATHER_CON_LEVEL.csv 中RAIN_IND及CLEAR_IND对应列。
- - 人体舒适度指数：$`a+b`$
+ - 人体舒适度指数：$`a+b`$,
+
 $SSD = \left( {1.818T + 18.18} \right)\left( {0.88{\rm{ }} + 0.002F} \right) + \left( {T - {\rm{ }}32} \right)/\left( {45{\rm{ }} - T} \right) - {\rm{ }}3.2V + {\rm{ }}18.2$
 其中：温度$T$，湿度$F$，风速$V$
  - 城市天气确定：通过城市经纬度计算城市到各机场距离，城市对应天气采用与之最近的机场信息。
