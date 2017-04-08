@@ -95,13 +95,13 @@ GBDT: 第一次训练样本保留量为90%。
 - 方法：过去21天的按工作日平均，得到按工作日平均的均值销量。通过过去三周按周统计的销量中位数及平均值，做线性拟合得到销量增量。将历史均值销量叠加销量增量即得到未来2周预测销量。
 - 由于方法本质上寻找历史上相似的(过去三周相关度较高)销量曲线作为未来预测，本质上为均值模型与KNN方法的结合。
 - 置信度即为融合系数，仅当三周相关系数或后两周相关系数的最小值大于0.7时有效。均值模型的融合比例最大为0.75。融合系数计算方法为：
-<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/gxdn8nohm2qsvayrgri4hbh3/eq1png.png" width="600" height="150" alt="Item-based filtering" /></div>
+<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/gxdn8nohm2qsvayrgri4hbh3/eq1png.png" width="300" height="60" alt="Item-based filtering" /></div>
 
 
 ### 3.3 双11销量修正模型
 - 特征描述：仅包含商家特征，包含平均View/Pay比值，平均每天开店时间，关店时间，开店总时长；首次营业日期，非节假日销量中位数，节假日销量中位数，节假日/非节假日销量比值；商家类别，人均消费，评分，评论数，门店等级。
 - 双11销量增量，计算方法为2015-11-11当天销量$V_{20151111}$与其前后两周对应工作日$V_{20151028}$，$V_{20151104}$，$V_{20151118}$，$V_{20151125}$的加权销量的比值,权重系数分别为$0.15,0.35,0.35,0.15$.
-<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/5iyvh7olsr32dncmn49vuilo/eq2.png" width="600" height="150" alt="Item-based filtering" /></div>
+<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/5iyvh7olsr32dncmn49vuilo/eq2.png" width="300" height="50" alt="Item-based filtering" /></div>
 - 训练方法: 采用xgboost单模型训练，由于双11当天对应的工作日不同，2015年数据并不能很好反映出2016年双11节假日情况，且超市便利店类商店存在大量的数据缺失。为防止过拟合，参数设置均较为保守，最大深度为2，且加了较大的$L1$正则项，具体如下: max_depth = 2, learning_rate=0.01, n_estimators=500, reg_alpha=10, gamma = 1
 
 ### 3.4 模型融合
