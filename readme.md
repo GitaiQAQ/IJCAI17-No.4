@@ -9,11 +9,13 @@ lizhongjie1989@163.com,     yaoyichen@aliyun.com
 
 
 ----------
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
 ## 赛题概述
 - 背景：阿里巴巴和蚂蚁金服逐渐积累了来自用户和商家的海量线上线下交易数据。蚂蚁金服的O2O平台“口碑”使用这些数据为商家提供了包括交易统计，销售分析和销售建议等定制的后端商业智能服务。
 - 赛题官网: [阿里天池IJCAI17](https://tianchi.aliyun.com/competition/introduction.htm?spm=5176.100067.5678.1.amifQx&raceId=231591 "阿里天池 IJCAI17") 
 - 赛题目标：通过阿里口碑网2000个商户从2015.07.01到2016.10.31的商家数据，用户支付行为数据以及用户浏览行为数据，预测商家在未来14天（2016.11.01-2016.11.14）的客户流量。
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 - 测评函数：\\(L = \frac{1}{{NT}}\sum\limits_i^N {\sum\limits_t^T {\left| {\frac{{{p_{it}} - {r_{it}}}}{{{p_{it}} + {r_{it}}}}} \right|} }\\),其中$p_{it}$为商家$i$在日期$t$销量预测值，$r_{it}$为其真实值。
 - 本次比赛鼓励参赛选手使用外部数据，如天气数据等。
 
