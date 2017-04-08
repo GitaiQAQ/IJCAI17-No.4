@@ -1,4 +1,4 @@
-#IJCAI17口碑商家客流量预测 Flamingo Rank4 
+# IJCAI17口碑商家客流量预测 Flamingo Rank4 
 
 李中杰，姚易辰
 清华大学热能系，清华大学工程力学系
