@@ -47,7 +47,7 @@ lizhongjie1989@163.com,     yaoyichen@aliyun.com
 
 - 对于单用户某小时内购买行为，采用  处理消除异常消费。
 - 开业前7天数据不用于训练集，销量间断前后1天数据不用于训练集。
-- 销量以历史过去14天销量的 为限制，其中 为均值， 为均方根。
+- 销量以历史过去14天销量的![eq1.png-0.4kB][7]为限制，其中![CodeCogsEqn.png-0.2kB][5]为均值，![sigma.png-0.2kB][6]为均方根。
 
 #### 2.2.2模型预训练清除：
 详见第三部分。对于规则难以清除的脏数据，采用预训练的方式清除。模型训练中首先采用欠拟合的算法模型预训练，并清除残差最大的10%(xgboost1,GBDT)和25%(xgboost2)的样本。
@@ -199,3 +199,6 @@ GBDT模型，详见3.1
   [2]: http://static.zybuluo.com/Jessy923/bsw2bmxrm5xx4vmt3tu8pujr/pipeline.JPG
   [3]: http://static.zybuluo.com/Jessy923/gxdn8nohm2qsvayrgri4hbh3/eq1png.png
   [4]: http://static.zybuluo.com/Jessy923/5iyvh7olsr32dncmn49vuilo/eq2.png
+  [5]: http://static.zybuluo.com/Jessy923/6jv0uky4zgixeb908p3exyh7/CodeCogsEqn.png
+  [6]: http://static.zybuluo.com/Jessy923/9akt97ki85bpnyg2rmn3elrn/sigma.png
+  [7]: http://static.zybuluo.com/Jessy923/ragtl6gap10a6esjjiil9vjq/eq1.png
